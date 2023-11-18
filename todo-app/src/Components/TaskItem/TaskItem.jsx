@@ -1,6 +1,7 @@
 // TaskItem.js
 import React from 'react';
-import { Checkbox, Box, Text, Button, Flex } from '@chakra-ui/react';
+import { Checkbox, Box, Text, Button, Flex, IconButton } from '@chakra-ui/react';
+import { DeleteIcon } from '@chakra-ui/icons';
 
 export const TaskItem = ({ task, onTaskCompleted, onDeleteTask }) => {
   const handleCompleteTask = () => {
@@ -23,9 +24,20 @@ export const TaskItem = ({ task, onTaskCompleted, onDeleteTask }) => {
             {task.name}
             </Text>
         </Flex>
-        <Button ml={2} colorScheme="red" onClick={handleDeleteTask}>
+        {/* <Button ml={2} colorScheme="red" onClick={handleDeleteTask}>
             Eliminar
-        </Button>
+        </Button> */}
+        <IconButton
+          type="button"
+          onClick={handleDeleteTask}
+          isRound={true}          
+          variant="solid"
+          colorScheme=""
+          aria-label="Agregar"
+          size='sm'
+          fontSize="12px"
+          icon={<DeleteIcon />}
+          />
     </Flex>
   );
 };

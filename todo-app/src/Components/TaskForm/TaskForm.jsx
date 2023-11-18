@@ -23,7 +23,7 @@ export const TaskForm = ({ onAddTask }) => {
                     placeholder='Agregar tarea'
                     value={taskName}
                     onChange={handleInputChange}     
-                    bgColor='midnightblue'
+                    bgColor='blue.900'
                     border='none'
                     rounded='25px'            
                 />
