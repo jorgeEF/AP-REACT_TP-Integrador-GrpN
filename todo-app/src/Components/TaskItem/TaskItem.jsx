@@ -22,10 +22,12 @@ export const TaskItem = ({ task, onTaskCompleted, onDeleteTask }) => {
   };
 
   return (
-    <Flex alignItems="center" justifyContent="space-between" mt={2}>
+    <Flex alignItems="center" justifyContent="space-between" mt={2} p={1} bgColor='rgba(30, 30, 50, 0.3)' borderRadius='5px'>
       <Flex alignItems="center">
         <Checkbox
           mr={2}
+          ml={2}
+          variant='circular'       
           isChecked={task.completed}
           onChange={handleCompleteTask}
         />
@@ -56,6 +58,6 @@ export const TaskItem = ({ task, onTaskCompleted, onDeleteTask }) => {
           icon={<DeleteIcon />}
         />
       </Flex>
-    </Flex>
+    </Flex>    
   );
 };

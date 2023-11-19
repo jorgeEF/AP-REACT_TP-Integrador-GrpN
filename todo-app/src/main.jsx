@@ -12,6 +12,17 @@ const theme = extendTheme({
       },
     },
   },
+  components: {
+    Checkbox: {
+      variants: {
+        circular: {
+          control: {
+            borderRadius: 'full',
+          },
+        },
+      },
+    },
+  },
 });
 
 ReactDOM.createRoot(document.getElementById('root')).render(
