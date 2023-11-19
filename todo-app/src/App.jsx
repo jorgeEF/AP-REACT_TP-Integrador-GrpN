@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Spacer, Text, Center, useToast, MenuButton, Menu, IconButton, Flex } from '@chakra-ui/react';
+import { Box, Spacer, Heading, Text, Center, useToast, MenuButton, Menu, IconButton, Flex } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
 import {TaskList} from './Components/TaskList/TaskList';
 import {TaskForm} from './Components/TaskForm/TaskForm';
@@ -70,7 +70,7 @@ export const App = () => {
             </Menu>
           </Box>
           <Spacer />
-          <Text>Tareas</Text>
+          <Heading size="xs" color='gray.300'>MIS TAREAS</Heading>
         </Flex>
         <TaskForm onAddTask={handleAddTask} />
         <TaskList

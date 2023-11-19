@@ -12,8 +12,8 @@ export const TaskList = ({ tasks, onTaskCompleted, onDeleteTask }) => {
         <>
             <Flex flexDirection="column" mt={4}>
                 {/* Lista de tareas por completar */}
-                <Heading size="md" mb={2}>
-                    Por hacer
+                <Heading size="xs" color='gray.300' mb={2}>
+                    POR HACER
                 </Heading>
                 {incompleteTasks.map((task) => (
                     <TaskItem
@@ -27,8 +27,8 @@ export const TaskList = ({ tasks, onTaskCompleted, onDeleteTask }) => {
                 {/* Lista de tareas completadas */}
                 {completedTasks.length > 0 && (
                     <>
-                        <Heading size="md" mt={4} mb={2}>
-                            Completadas
+                        <Heading size="xs" color='gray.300' mt={4} mb={2}>
+                            COMPLETADAS
                         </Heading>
                         {completedTasks.map((task) => (
                             <TaskItem
