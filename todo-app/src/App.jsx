@@ -42,15 +42,17 @@ export const App = () => {
     setTasks(updatedTasks);
   };
 
-  const handleAddTask = (taskName) => {
+  const handleAddTask = (taskName, dueDate) => {
     const newTask = {
       id: new Date().getTime(),
       name: taskName,
       completed: false,
+      dueDate: dueDate,
     };
     setTasks([...tasks, newTask]);
     setActionPerformed(true);
   };
+  
 
   return (
     <Center height="100vh">
