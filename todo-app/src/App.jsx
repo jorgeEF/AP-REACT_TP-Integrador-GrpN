@@ -42,12 +42,10 @@ export const App = () => {
     setTasks(updatedTasks);
   };
 
-  const handleAddTask = (taskName, dueDate) => {
-    const newTask = {
-      id: new Date().getTime(),
+  const handleAddTask = (taskName) => {
+    const newTask = {      
       name: taskName,
-      completed: false,
-      dueDate: dueDate,
+      completed: false,      
     };
     setTasks([...tasks, newTask]);
     setActionPerformed(true);
