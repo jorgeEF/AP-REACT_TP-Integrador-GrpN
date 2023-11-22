@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Spacer, Heading, Text, Center, useToast, MenuButton, Menu, IconButton, Flex } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
-import {TaskList} from './Components/TaskList/TaskList';
-import {TaskForm} from './Components/TaskForm/TaskForm';
+import { TaskList } from './Components/TaskList/TaskList';
+import { TaskForm } from './Components/TaskForm/TaskForm';
 
 export const App = () => {
-
   const [tasks, setTasks] = useState(() => {
     // Intenta obtener las tareas desde localStorage al cargar la aplicación
     const storedTasks = localStorage.getItem('tasks');
     return storedTasks ? JSON.parse(storedTasks) : [];
+  });
+
+  const [taskIdCounter, setTaskIdCounter] = useState(() => {
+    const storedIdCounter = localStorage.getItem('taskIdCounter');
+    return storedIdCounter ? parseInt(storedIdCounter, 10) : 1;
   });
 
   const [actionPerformed, setActionPerformed] = useState(false);
@@ -18,6 +22,7 @@ export const App = () => {
   // Guarda las tareas en localStorage cuando se actualiza el estado
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks));
+    localStorage.setItem('taskIdCounter', taskIdCounter.toString());
     if (actionPerformed) {
       toast({
         title: 'Lista de tareas actualizada',
@@ -28,7 +33,7 @@ export const App = () => {
       });
       setActionPerformed(false);
     }
-  }, [tasks, actionPerformed, toast]);
+  }, [tasks, taskIdCounter, actionPerformed, toast]);
 
   const handleTaskCompleted = (taskId, isCompleted) => {
     const updatedTasks = tasks.map((task) =>
@@ -43,14 +48,15 @@ export const App = () => {
   };
 
   const handleAddTask = (taskName) => {
-    const newTask = {      
+    const newTask = {
+      id: taskIdCounter,
       name: taskName,
-      completed: false,      
+      completed: false,
     };
     setTasks([...tasks, newTask]);
+    setTaskIdCounter(taskIdCounter + 1);
     setActionPerformed(true);
   };
-  
 
   return (
     <Center height="100vh">
@@ -58,15 +64,15 @@ export const App = () => {
         <Flex minWidth='max-content' alignItems='center' gap='2'>
           <Box>
             <Menu isDisabled={true}>
-            <MenuButton
-              as={IconButton}          
-              aria-label='Menu'
-              icon={<HamburgerIcon color='white'/>}
-              variant='outline'
-              border='none'
-              _hover={{ bg: 'blue.700' }}
-              _active={{ bg: 'blue.700' }}  
-            />
+              <MenuButton
+                as={IconButton}
+                aria-label='Menu'
+                icon={<HamburgerIcon color='white' />}
+                variant='outline'
+                border='none'
+                _hover={{ bg: 'blue.700' }}
+                _active={{ bg: 'blue.700' }}
+              />
             </Menu>
           </Box>
           <Spacer />
