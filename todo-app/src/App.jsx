@@ -81,6 +81,7 @@ export const App = () => {
         <TaskForm onAddTask={handleAddTask} />
         <TaskList
           tasks={tasks}
+          setTasks={setTasks}
           onTaskCompleted={handleTaskCompleted}
           onDeleteTask={handleDeleteTask}
         />
