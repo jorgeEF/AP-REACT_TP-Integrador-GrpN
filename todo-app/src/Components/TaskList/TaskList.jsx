@@ -1,13 +1,24 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Flex, Heading } from '@chakra-ui/react';
 import { TaskItem } from '../TaskItem/TaskItem';
 
 export const TaskList = ({ tasks, onTaskCompleted, onDeleteTask, setTasks, onAddDueDate }) => {
+  const [updateKey, setUpdateKey] = useState(0);
+
     const handleTaskCompleted = (taskId, isCompleted) => {
       const updatedTasks = tasks.map((task) =>
         task.id === taskId ? { ...task, completed: isCompleted } : task
       );
       setTasks(updatedTasks);
+      setUpdateKey((prevKey) => prevKey + 1);
+    };
+
+    const handleAddDueDate = (taskId, dueDate) => {
+      const updatedTasks = tasks.map((task) =>
+        task.id === taskId ? { ...task, dueDate } : task
+      );
+      setTasks(updatedTasks);
+      setUpdateKey((prevKey) => prevKey + 1);
     };
 
   // Filtrar tareas por completar y tareas completadas
@@ -25,9 +36,10 @@ export const TaskList = ({ tasks, onTaskCompleted, onDeleteTask, setTasks, onAdd
           <TaskItem
             key={task.id}
             task={task}
-            onTaskCompleted={onTaskCompleted}
-            onDeleteTask={onDeleteTask}
-            onAddDueDate={onAddDueDate}
+            onTaskCompleted={handleTaskCompleted}
+            onDeleteTask={onDeleteTask}            
+            onAddDueDate={handleAddDueDate}
+            onDateAdded={() => setUpdateKey((prevKey) => prevKey + 1)}
           />
         ))}
 
