@@ -1,8 +1,8 @@
 import React from 'react';
-import { Flex, Heading, Box, Text, Center } from '@chakra-ui/react';
+import { Flex, Heading } from '@chakra-ui/react';
 import { TaskItem } from '../TaskItem/TaskItem';
 
-export const TaskList = ({ tasks, onTaskCompleted, onDeleteTask, setTasks }) => {
+export const TaskList = ({ tasks, onTaskCompleted, onDeleteTask, setTasks, onAddDueDate }) => {
     const handleTaskCompleted = (taskId, isCompleted) => {
       const updatedTasks = tasks.map((task) =>
         task.id === taskId ? { ...task, completed: isCompleted } : task
@@ -27,6 +27,7 @@ export const TaskList = ({ tasks, onTaskCompleted, onDeleteTask, setTasks }) => 
             task={task}
             onTaskCompleted={onTaskCompleted}
             onDeleteTask={onDeleteTask}
+            onAddDueDate={onAddDueDate}
           />
         ))}
 
