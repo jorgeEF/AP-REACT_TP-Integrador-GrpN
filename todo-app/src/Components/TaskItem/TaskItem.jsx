@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Checkbox, Flex, Text, IconButton, Box } from '@chakra-ui/react';
 import { DeleteIcon, CalendarIcon } from '@chakra-ui/icons';
 import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
+import '../../assets/Calendar.css';
 
 export const TaskItem = ({ task, onTaskCompleted, onDeleteTask, onAddDueDate }) => {
   const [showCalendar, setShowCalendar] = useState(false);
