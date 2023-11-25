@@ -78,7 +78,7 @@ export const App = () => {
 
   return (
     <Center height="100vh">
-      <Box p={4} mt={4} bg={oscuro ?"#31315b":"#ffffff"}  borderRadius="md" color="#ffffff">
+      <Box p={4} mt={4} bg={oscuro ?"#31315b":"#ffffff"}  borderRadius="md" color="#ffffff" minWidth="15vw">
         <Flex  minWidth='max-content' alignItems='center' gap='2'>
           <Box mb="6px">
             <Menu>
@@ -86,14 +86,14 @@ export const App = () => {
                 as={IconButton}
                 aria-label='Menu'
                 icon={<HamburgerIcon color={oscuro ?"#8e8fb5":"#31315b" } 
-                fontSize="22px" 
+                fontSize="1.5rem" 
                 />}
                 _focus={{ bg: oscuro?"#31315b":"#ffffff"}}
                 variant='outline'
                 border='none'
                 _hover={{ bg: oscuro?"#31315b":"#ffffff"}}
               />
-              <MenuList maxW="225px" minW="225px" bg={oscuro?'#4F5481': '#8e8fb5'}>
+              <MenuList maxW="14vw" minW="14vw" bg={oscuro?'#4F5481': '#8e8fb5'}>
                 <MenuOptionGroup >
                   <Text onClick={cambiarModo}> <IconButton  isRound='true' icon={oscuro ? <FaSun /> : <FaMoon />}  color="#ffffff" bg={oscuro ?"#4f5481":"#8e8fb5"} _hover={{ bg:oscuro ?"#4f5481":"#8e8fb5" }}></IconButton>{oscuro?'Modo Oscuro':'Modo Claro'}</Text>
                 </MenuOptionGroup>
@@ -110,10 +110,10 @@ export const App = () => {
                         </AccordionButton>
                       </h2>
                       <AccordionPanel pb={4}>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                        commodo consequat.
+                      Crear una aplicación web utilizando React que permita gestionar una lista de tareas. La
+                      aplicación deberá hacer uso de componentes funcionales, el hook useState para el manejo del
+                      estado, el hook useEffect para realizar efectos secundarios, y eventos para interactuar con el
+                      usuario.
                       </AccordionPanel>
                     </AccordionItem>
 
