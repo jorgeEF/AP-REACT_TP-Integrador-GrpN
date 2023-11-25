@@ -89,6 +89,9 @@ export const TaskItem = ({ task, onTaskCompleted, onDeleteTask, onAddDueDate, on
           variant="solid"
           color={oscuro?"#8EAED9":'#9293B3'}
           bg={oscuro?'#44446b':'#ffffff'}
+          _hover={{
+            bgColor:oscuro?'#44446b':'#ffffff',
+          }}
           aria-label="Eliminar"
           size='sm'
           fontSize="12px"

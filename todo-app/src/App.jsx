@@ -1,8 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Spacer, Heading, Text, Center, useToast, MenuButton, Menu, IconButton, Flex, useColorMode, Divider } from '@chakra-ui/react';
+import {  
+    Box, Spacer, Heading, Text, Center, useToast, MenuButton, Menu, IconButton, Flex, 
+    useColorMode, Divider, Accordion, AccordionButton, AccordionIcon, List, AccordionItem , 
+    AccordionPanel, ListItem } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
 import { TaskList } from './Components/TaskList/TaskList';
 import { TaskForm } from './Components/TaskForm/TaskForm';
+import {FaSun, FaMoon } from 'react-icons/fa'
+import {
+  MenuList,
+  MenuItem,
+  MenuItemOption,
+  MenuGroup,
+  MenuOptionGroup,
+  MenuDivider,
+} from '@chakra-ui/react'
 
 export const App = () => {
   const [tasks, setTasks] = useState(() => {
@@ -58,30 +70,78 @@ export const App = () => {
     setActionPerformed(true);    
   };
   
+  //funcion para cambiar el estado de oscuro a claro
   const [oscuro, setOscuro] = useState(true)
   const cambiarModo =()=>{
     setOscuro(!oscuro);
   }
+
   return (
     <Center height="100vh">
-      <Box p={4} mt={4} bg={oscuro ?"#31315b":"white"}  borderRadius="md" color="white">
-        <Flex minWidth='max-content' alignItems='center' gap='2'>
+      <Box p={4} mt={4} bg={oscuro ?"#31315b":"#ffffff"}  borderRadius="md" color="#ffffff">
+        <Flex  minWidth='max-content' alignItems='center' gap='2'>
           <Box mb="6px">
-            <Menu isDisabled={true}>
+            <Menu>
               <MenuButton
                 as={IconButton}
                 aria-label='Menu'
-                icon={<HamburgerIcon color={oscuro ?"#8e8fb5":"#31315b"}
+                icon={<HamburgerIcon color={oscuro ?"#8e8fb5":"#31315b" } 
                 fontSize="22px" 
                 />}
+                _focus={{ bg: oscuro?"#31315b":"#ffffff"}}
                 variant='outline'
                 border='none'
                 _hover={{ bg: oscuro?"#31315b":"#ffffff"}}
               />
+              <MenuList maxW="225px" minW="225px" bg={oscuro?'#4F5481': '#8e8fb5'}>
+                <MenuOptionGroup >
+                  <Text onClick={cambiarModo}> <IconButton  isRound='true' icon={oscuro ? <FaSun /> : <FaMoon />}  color="#ffffff" bg={oscuro ?"#4f5481":"#8e8fb5"} _hover={{ bg:oscuro ?"#4f5481":"#8e8fb5" }}></IconButton>{oscuro?'Modo Oscuro':'Modo Claro'}</Text>
+                </MenuOptionGroup>
+                <MenuDivider bg={oscuro ?"#ffffff":"#31315b"}color={oscuro ?"#31315b":"#8e8fb5"}/>
+                <MenuOptionGroup title='To Do List'>
+                  <Accordion allowToggle>
+                    <AccordionItem color="#31315b" bg="#ffffff">  
+                      <h2>
+                        <AccordionButton color="#ffffff" bg={oscuro ?"#4f5481":"#8e8fb5"} _hover={oscuro?"#31315b":"#8e8fb5"}>
+                          <Box as="span" flex='1' textAlign='left'>
+                            El Proyecto
+                          </Box>
+                          <AccordionIcon />
+                        </AccordionButton>
+                      </h2>
+                      <AccordionPanel pb={4}>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                        commodo consequat.
+                      </AccordionPanel>
+                    </AccordionItem>
+
+                    <AccordionItem color="#31315b" bg="#ffffff">
+                      <h2>
+                        <AccordionButton color="#ffffff" bg={oscuro ?"#4f5481":"#8e8fb5"} _hover={oscuro?"#31315b":"#8e8fb5"}>
+                          <Box as="span" flex='1' textAlign='left'>
+                            Integrantes
+                          </Box>
+                          <AccordionIcon />
+                        </AccordionButton>
+                      </h2>
+                      <AccordionPanel pb={4}>
+                        <List>
+                          <ListItem> Fernández Sebastián</ListItem>
+                          <ListItem> Jorge Esteban Femenia</ListItem>
+                          <ListItem> María Belén Guillamondegui</ListItem>
+                          <ListItem> Facundo Ezequiel García</ListItem>
+                        </List>
+                      </AccordionPanel>
+                    </AccordionItem>
+                  </Accordion>
+                </MenuOptionGroup>
+              </MenuList>
             </Menu>
           </Box>
           <Spacer />
-          <Heading size="xs" color={oscuro?'#4F5481': '#707186'} onClick={cambiarModo} >MIS TAREAS</Heading>
+          <Heading size="xs" color={oscuro?'#4F5481': '#cccede'} >MIS TAREAS</Heading>
         </Flex>
         <TaskForm onAddTask={handleAddTask} oscuro={oscuro} />
         <Divider mt="10px"/>
