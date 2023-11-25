@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Checkbox, Flex, Text, IconButton, Box } from '@chakra-ui/react';
-import { DeleteIcon, CalendarIcon } from '@chakra-ui/icons';
+import { FaRegCalendarAlt } from "react-icons/fa";
+import { DeleteIcon } from '@chakra-ui/icons';
 import Calendar from 'react-calendar';
 import '../../assets/Calendar.css';
 
-export const TaskItem = ({ task, onTaskCompleted, onDeleteTask, onAddDueDate, onDateAdded }) => {
+export const TaskItem = ({ task, onTaskCompleted, onDeleteTask, onAddDueDate, onDateAdded, oscuro }) => {
   const [showCalendar, setShowCalendar] = useState(false);
 
   const handleCompleteTask = () => {
@@ -32,31 +33,45 @@ export const TaskItem = ({ task, onTaskCompleted, onDeleteTask, onAddDueDate, on
   };
 
   return (
-    <Flex key={task.id} alignItems="center" justifyContent="space-between" mt={2} p={1} bgColor='rgba(30, 30, 50, 0.3)' borderRadius='5px'>
-      <Flex alignItems="center">
+    <Flex key={task.id} 
+      alignItems="center" 
+      justifyContent="space-between" mt={2} p={1} 
+      borderRadius="5px" 
+      bgColor={oscuro?'#44446b':'#ffffff'} 
+      opacity={task.completed?0.5:1}
+      border={oscuro?"1px solid #44446b":task.completed ? "none":"1px solid #eff3f7"}
+      boxShadow= {task.completed?"":"0px 2px 5px rgba(0, 0, 0, 0.1)"}
+    >
+      <Flex alignItems="center" mr="5px" marginBlock="6px">
         <Checkbox
           mr={2}
           ml={2}
           variant='circular'       
-          isChecked={task.completed}
           onChange={handleCompleteTask}
+          isChecked={task.completed}
+          iconColor={task.completed?'#249a5a':'#249a5a'}
+          borderRadius="50%"
+          borderColor={oscuro?'#ffffff':'#eff3f7'}
+          colorScheme='custom'
+          bgColor={task.completed?"#d7f9d1":"#ffffff"}
         />
-        <Text textDecoration={task.completed ? 'line-through' : 'none'}>
-          {task.name}
+        <Text textDecoration={task.completed ? 'line-through' : 'none'} color={oscuro?'#c7c7dd':'#767686'} isDisabled>
+          {task.name} 
         </Text>
       </Flex>
-      <Flex alignItems="center">
+      <Flex alignItems="center" >
         {task.dueDate ? (
-          <Text fontSize="12px" color="teal" mr={2}>
-            {new Date(task.dueDate).toLocaleDateString()}
+          <Text fontSize="8px" color={oscuro?"#8EAED9":'#9293B3'} mr={2}>
+            {new Date(task.dueDate).toLocaleDateString()} 
           </Text>
         ) : null}
         {!task.completed && !task.dueDate && (
           <IconButton
-            icon={<CalendarIcon />}
-            colorScheme="teal"
+            icon={<FaRegCalendarAlt/>}
+            colorScheme="costom"
+            color={oscuro?"#8EAED9":'#9293B3'}
             size="sm"
-            fontSize="18px"
+            boxSize="8px"
             mr={2}
             ml={2}
             onClick={handleToggleCalendar}
@@ -72,7 +87,8 @@ export const TaskItem = ({ task, onTaskCompleted, onDeleteTask, onAddDueDate, on
           onClick={handleDeleteTask}
           isRound={true}
           variant="solid"
-          colorScheme=""
+          color={oscuro?"#8EAED9":'#9293B3'}
+          bg={oscuro?'#44446b':'#ffffff'}
           aria-label="Eliminar"
           size='sm'
           fontSize="12px"

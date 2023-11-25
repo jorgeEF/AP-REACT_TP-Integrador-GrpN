@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Spacer, Heading, Text, Center, useToast, MenuButton, Menu, IconButton, Flex } from '@chakra-ui/react';
+import { Box, Spacer, Heading, Text, Center, useToast, MenuButton, Menu, IconButton, Flex, useColorMode, Divider } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
 import { TaskList } from './Components/TaskList/TaskList';
 import { TaskForm } from './Components/TaskForm/TaskForm';
@@ -55,35 +55,42 @@ export const App = () => {
     };
     setTasks([...tasks, newTask]);
     setTaskIdCounter(taskIdCounter + 1);
-    setActionPerformed(true);
+    setActionPerformed(true);    
   };
-
+  
+  const [oscuro, setOscuro] = useState(true)
+  const cambiarModo =()=>{
+    setOscuro(!oscuro);
+  }
   return (
     <Center height="100vh">
-      <Box p={4} mt={4} bg="blue.700" borderRadius="md" color="white">
+      <Box p={4} mt={4} bg={oscuro ?"#31315b":"white"}  borderRadius="md" color="white">
         <Flex minWidth='max-content' alignItems='center' gap='2'>
-          <Box>
+          <Box mb="6px">
             <Menu isDisabled={true}>
               <MenuButton
                 as={IconButton}
                 aria-label='Menu'
-                icon={<HamburgerIcon color='white' />}
+                icon={<HamburgerIcon color={oscuro ?"#8e8fb5":"#31315b"}
+                fontSize="22px" 
+                />}
                 variant='outline'
                 border='none'
-                _hover={{ bg: 'blue.700' }}
-                _active={{ bg: 'blue.700' }}
+                _hover={{ bg: oscuro?"#31315b":"#ffffff"}}
               />
             </Menu>
           </Box>
           <Spacer />
-          <Heading size="xs" color='gray.300'>MIS TAREAS</Heading>
+          <Heading size="xs" color={oscuro?'#4F5481': '#707186'} onClick={cambiarModo} >MIS TAREAS</Heading>
         </Flex>
-        <TaskForm onAddTask={handleAddTask} />
+        <TaskForm onAddTask={handleAddTask} oscuro={oscuro} />
+        <Divider mt="10px"/>
         <TaskList
           tasks={tasks}
           setTasks={setTasks}
           onTaskCompleted={handleTaskCompleted}
           onDeleteTask={handleDeleteTask}
+          oscuro={oscuro}
         />
       </Box>
     </Center>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Flex, Input, Button, InputGroup, InputRightElement } from '@chakra-ui/react';
 import { AddIcon } from '@chakra-ui/icons';
 
-export const TaskForm = ({ onAddTask }) => {
+export const TaskForm = ({ onAddTask, oscuro }) => {
     const [taskName, setTaskName] = useState('');
 
     const handleInputChange = (e) => {
@@ -20,12 +20,15 @@ export const TaskForm = ({ onAddTask }) => {
             <InputGroup flex="1" mr={2}>
                 <Input
                     type="text"
-                    placeholder='Agregar tarea'
                     value={taskName}
                     onChange={handleInputChange}
-                    bgColor='blue.900'
+                    bgColor={oscuro?'#282851': '#ebf1f5'}
+                    color={oscuro?'#c7c7dd':'#767686'}
                     border='none'
                     rounded='25px'
+                    placeholder='Agregar tarea'
+                    _placeholder={{color:oscuro?'#c6c6e1': '#707186'}}
+                    focusBorderColor={oscuro?'#282851': '#ebf1f5'}
                 />
                 <InputRightElement>
                     <Button
@@ -33,9 +36,14 @@ export const TaskForm = ({ onAddTask }) => {
                         variant="solid"
                         borderRadius="300px"
                         mr="5px"
-                        colorScheme="teal"
+                        bgColor="#3d79b1"
+                        color="white"
                         size='sm'
                         fontSize="12px"
+                        _hover={{
+                            bgColor:'#3d79b1',
+                        }}
+                       
                     >
                         <AddIcon />
                     </Button>
