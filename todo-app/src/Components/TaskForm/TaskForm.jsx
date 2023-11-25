@@ -26,6 +26,7 @@ export const TaskForm = ({ onAddTask, oscuro }) => {
                     onChange={handleInputChange}
                     bgColor={oscuro?'#282851': '#ebf1f5'}
                     color={oscuro?'#c7c7dd':'#767686'}
+                    fontSize='1.1rem'
                     border='none'
                     rounded='25px'
                     placeholder='Agregar tarea'
@@ -42,12 +43,12 @@ export const TaskForm = ({ onAddTask, oscuro }) => {
                         bgColor="#3d79b1"
                         color="white"
                         size='sm'
-                        fontSize="12px"
+                        fontSize="0.2rem"
                         _hover={{
                             bgColor:'#3d79b1',
                         }}
                     >
-                        <AddIcon />
+                        <AddIcon boxSize={3}/>
                     </Button>
                 </InputRightElement>
             </InputGroup>

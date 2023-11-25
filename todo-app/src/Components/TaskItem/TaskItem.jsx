@@ -55,13 +55,13 @@ export const TaskItem = ({ task, onTaskCompleted, onDeleteTask, onAddDueDate, on
           colorScheme='custom'
           bgColor={task.completed?"#d7f9d1":"#ffffff"}
         />
-        <Text textDecoration={task.completed ? 'line-through' : 'none'} color={oscuro?'#c7c7dd':'#767686'} isDisabled>
+        <Text fontSize="1rem" textDecoration={task.completed ? 'line-through' : 'none'} color={oscuro?'#c7c7dd':'#767686'}>
           {task.name} 
         </Text>
       </Flex>
       <Flex alignItems="center" >
         {task.dueDate ? (
-          <Text fontSize="8px" color={oscuro?"#8EAED9":'#9293B3'} mr={2}>
+          <Text fontSize="0.8rem" color={oscuro?"#8EAED9":'#9293B3'} mr={2}>
             {new Date(task.dueDate).toLocaleDateString()} 
           </Text>
         ) : null}
@@ -71,7 +71,7 @@ export const TaskItem = ({ task, onTaskCompleted, onDeleteTask, onAddDueDate, on
             colorScheme="costom"
             color={oscuro?"#8EAED9":'#9293B3'}
             size="sm"
-            boxSize="8px"
+            boxSize="0.8rem"
             mr={2}
             ml={2}
             onClick={handleToggleCalendar}
@@ -94,7 +94,7 @@ export const TaskItem = ({ task, onTaskCompleted, onDeleteTask, onAddDueDate, on
           }}
           aria-label="Eliminar"
           size='sm'
-          fontSize="12px"
+          fontSize="0.8rem"
           icon={<DeleteIcon />}
         />
       </Flex>
