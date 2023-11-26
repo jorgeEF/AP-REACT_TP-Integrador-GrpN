@@ -93,7 +93,11 @@ export const App = () => {
                 border='none'
                 _hover={{ bg: oscuro?"#31315b":"#ffffff"}}
               />
-              <MenuList maxW="14vw" minW="14vw" bg={oscuro?'#4F5481': '#8e8fb5'}>
+              <MenuList
+                width={{ base: "100%", md: "14vw" }}
+                minW="14vw" 
+                bg={oscuro?'#4F5481': '#8e8fb5'}
+              >
                 <MenuOptionGroup >
                   <Text onClick={cambiarModo}> <IconButton  isRound='true' icon={oscuro ? <FaSun /> : <FaMoon />}  color="#ffffff" bg={oscuro ?"#4f5481":"#8e8fb5"} _hover={{ bg:oscuro ?"#4f5481":"#8e8fb5" }}></IconButton>{oscuro?'Modo Oscuro':'Modo Claro'}</Text>
                 </MenuOptionGroup>
@@ -109,7 +113,7 @@ export const App = () => {
                           <AccordionIcon />
                         </AccordionButton>
                       </h2>
-                      <AccordionPanel pb={4}>
+                      <AccordionPanel pb={4} maxW="30vw">
                       Crear una aplicación web utilizando React que permita gestionar una lista de tareas. La
                       aplicación deberá hacer uso de componentes funcionales, el hook useState para el manejo del
                       estado, el hook useEffect para realizar efectos secundarios, y eventos para interactuar con el
@@ -126,7 +130,7 @@ export const App = () => {
                           <AccordionIcon />
                         </AccordionButton>
                       </h2>
-                      <AccordionPanel pb={4}>
+                      <AccordionPanel pb={4} maxW="30vw">
                         <List>
                           <ListItem> Fernández Sebastián</ListItem>
                           <ListItem> Jorge Esteban Femenia</ListItem>

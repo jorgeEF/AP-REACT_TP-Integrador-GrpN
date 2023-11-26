@@ -1,5 +1,5 @@
 .react-calendar {
-  width: 350px;
+  width: 20vw;
   max-width: 100%;
   background: rgb(24, 50, 75);  
   border-radius: 15px;
@@ -8,7 +8,7 @@
 }
 
 .react-calendar--doubleView {
-  width: 700px;
+  width: 25vw;
 }
 
 .react-calendar--doubleView .react-calendar__viewContainer {
@@ -42,12 +42,12 @@
 
 .react-calendar__navigation {
   display: flex;
-  height: 44px;
+  height: 2vh;
   margin-bottom: 1em;
 }
 
 .react-calendar__navigation button {
-  min-width: 44px;
+  min-width: 2vw;
   background: none;
 }
 
@@ -144,4 +144,14 @@
 
 .react-calendar--selectRange .react-calendar__tile--hover {
   background-color: #e6e6e6;
+}
+
+@media (max-width: 767px) {
+  .react-calendar {
+    width: 75vw;
+  }
+
+  .react-calendar--doubleView {
+    width: 80vw;
+  }  
 }
