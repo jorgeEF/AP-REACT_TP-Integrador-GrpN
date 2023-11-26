@@ -70,7 +70,8 @@ export const App = () => {
     setActionPerformed(true);    
   };
   
-  //funcion para cambiar el estado de oscuro a claro
+  // --Funcion para cambiar el estado de oscuro a claro-- 
+
   const [oscuro, setOscuro] = useState(true)
   const cambiarModo =()=>{
     setOscuro(!oscuro);
@@ -92,7 +93,6 @@ export const App = () => {
                 variant='outline'
                 border='none'
                 _hover={{ bg: oscuro?"#31315b":"#ffffff"}}
-                asd
               />
               <MenuList width={{ base: "100%", sm:"70%", md: "14vw" }} bg={oscuro?'#4F5481': '#8e8fb5'} minW="250px">
                 <MenuOptionGroup>
