@@ -77,9 +77,9 @@ export const App = () => {
   }
 
   return (
-    <Center height="100vh">
-      <Box p={4} mt={4} bg={oscuro ?"#31315b":"#ffffff"}  borderRadius="md" color="#ffffff" minWidth="15vw">
-        <Flex  minWidth='max-content' alignItems='center' gap='2'>
+    <Center height="100vh" w="100%">
+      <Box p={4} mt={4} bg={oscuro ?"#31315b":"#ffffff"}  borderRadius="md" color="#ffffff" minWidth="250px"  w={{ base: "80%", sm:"60%", md: "50%", lg: "30%" }} minH="500px">
+        <Flex   alignItems='center' gap='2'>
           <Box mb="6px">
             <Menu>
               <MenuButton
@@ -92,19 +92,16 @@ export const App = () => {
                 variant='outline'
                 border='none'
                 _hover={{ bg: oscuro?"#31315b":"#ffffff"}}
+                asd
               />
-              <MenuList
-                width={{ base: "100%", md: "14vw" }}
-                minW="14vw" 
-                bg={oscuro?'#4F5481': '#8e8fb5'}
-              >
-                <MenuOptionGroup >
+              <MenuList width={{ base: "100%", sm:"70%", md: "14vw" }} bg={oscuro?'#4F5481': '#8e8fb5'} minW="250px">
+                <MenuOptionGroup>
                   <Text onClick={cambiarModo}> <IconButton  isRound='true' icon={oscuro ? <FaSun /> : <FaMoon />}  color="#ffffff" bg={oscuro ?"#4f5481":"#8e8fb5"} _hover={{ bg:oscuro ?"#4f5481":"#8e8fb5" }}></IconButton>{oscuro?'Modo Oscuro':'Modo Claro'}</Text>
                 </MenuOptionGroup>
                 <MenuDivider bg={oscuro ?"#ffffff":"#31315b"}color={oscuro ?"#31315b":"#8e8fb5"}/>
-                <MenuOptionGroup title='To Do List'>
-                  <Accordion allowToggle>
-                    <AccordionItem color="#31315b" bg="#ffffff">  
+                <MenuOptionGroup title='To Do List' w="100%">
+                  <Accordion allowToggle w="250px">
+                    <AccordionItem color="#31315b" bg="#ffffff" w={{ base: "248px", md: "14vw" }} minW="248px">  
                       <h2>
                         <AccordionButton color="#ffffff" bg={oscuro ?"#4f5481":"#8e8fb5"} _hover={oscuro?"#31315b":"#8e8fb5"}>
                           <Box as="span" flex='1' textAlign='left'>
@@ -113,7 +110,7 @@ export const App = () => {
                           <AccordionIcon />
                         </AccordionButton>
                       </h2>
-                      <AccordionPanel pb={4} maxW="30vw">
+                      <AccordionPanel pb={4}  minW="250px">
                       Crear una aplicación web utilizando React que permita gestionar una lista de tareas. La
                       aplicación deberá hacer uso de componentes funcionales, el hook useState para el manejo del
                       estado, el hook useEffect para realizar efectos secundarios, y eventos para interactuar con el
@@ -121,7 +118,7 @@ export const App = () => {
                       </AccordionPanel>
                     </AccordionItem>
 
-                    <AccordionItem color="#31315b" bg="#ffffff">
+                    <AccordionItem color="#31315b" bg="#ffffff" w={{ base: "248px", md: "14vw" }} minW="248px">
                       <h2>
                         <AccordionButton color="#ffffff" bg={oscuro ?"#4f5481":"#8e8fb5"} _hover={oscuro?"#31315b":"#8e8fb5"}>
                           <Box as="span" flex='1' textAlign='left'>
@@ -130,7 +127,7 @@ export const App = () => {
                           <AccordionIcon />
                         </AccordionButton>
                       </h2>
-                      <AccordionPanel pb={4} maxW="30vw">
+                      <AccordionPanel pb={4}  minW="250px">
                         <List>
                           <ListItem> Fernández Sebastián</ListItem>
                           <ListItem> Jorge Esteban Femenia</ListItem>
