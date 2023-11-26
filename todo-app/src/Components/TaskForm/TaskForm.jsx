@@ -10,7 +10,7 @@ export const TaskForm = ({ onAddTask, oscuro }) => {
     };
 
     const handleSubmit = (e) => {
-        if (taskName !== ''){
+        if (taskName.trim() !== ''){
             e.preventDefault();
             onAddTask(taskName);
             setTaskName('');
@@ -32,7 +32,6 @@ export const TaskForm = ({ onAddTask, oscuro }) => {
                     placeholder='Agregar tarea'
                     _placeholder={{color:oscuro?'#c6c6e1': '#707186'}}
                     focusBorderColor={oscuro?'#282851': '#ebf1f5'}
-
                 />
                 <InputRightElement>
                     <Button
@@ -47,6 +46,7 @@ export const TaskForm = ({ onAddTask, oscuro }) => {
                         _hover={{
                             bgColor:'#3d79b1',
                         }}
+                        isDisabled={ taskName.trim() != ""  ? false : true} 
                     >
                         <AddIcon boxSize={3}/>
                     </Button>
